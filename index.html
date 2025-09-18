@@ -5,67 +5,176 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netflix Clone</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)), 
+                             url('https://occ-0-4574-4421.1.nflxso.net/dnm/api/v6/3z7gD8A25Cg6V6gQMrLXvEw2rd3LQx7jF2Mb7A0/AAAABVZXfAYIuTcTHaV2vwWsqw5l9zz8cHqDJqSg9n3JHRE5gR5Im9sVjvs8m6H4w59d_eYwYm4QgntRPmp5Dsx5VuK--_DgL2gGsmRrD_akpO_g5SlIHkmr5yJb7dXfg8DNOAY0dCVq1QK2iA7an8=');
+        }
+    </style>
 </head>
 <body class="bg-black text-white">
 
     <!-- Navbar -->
-    <header class="flex items-center justify-between p-4 bg-transparent absolute top-0 left-0 w-full z-10">
-        <div class="flex items-center space-x-6">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" class="h-10">
-            <ul class="flex space-x-6 text-sm font-semibold">
-                <li><a href="#" class="hover:text-red-500">Home</a></li>
-                <li><a href="#" class="hover:text-red-500">TV Shows</a></li>
-                <li><a href="#" class="hover:text-red-500">Movies</a></li>
-                <li><a href="#" class="hover:text-red-500">New & Popular</a></li>
-                <li><a href="#" class="hover:text-red-500">My List</a></li>
+    <header class="flex items-center justify-between p-4 lg:p-6 bg-transparent absolute top-0 left-0 w-full z-10">
+        <div class="flex items-center space-x-2 lg:space-x-6">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" class="h-6 lg:h-10">
+            <ul class="hidden md:flex space-x-4 lg:space-x-8 text-xs lg:text-sm font-semibold">
+                <li><a href="#" class="hover:text-red-500 transition-colors">Home</a></li>
+                <li><a href="#" class="hover:text-red-500 transition-colors">TV Shows</a></li>
+                <li><a href="#" class="hover:text-red-500 transition-colors">Movies</a></li>
+                <li><a href="#" class="hover:text-red-500 transition-colors">New & Popular</a></li>
+                <li><a href="#" class="hover:text-red-500 transition-colors">My List</a></li>
             </ul>
+            <!-- Mobile menu button -->
+            <button class="md:hidden text-white ml-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
-        <div class="flex items-center space-x-4">
-            <button class="text-sm">Search</button>
-            <button class="bg-red-600 px-4 py-2 rounded-md">Sign In</button>
+        <div class="flex items-center space-x-3 lg:space-x-6">
+            <button class="text-xs lg:text-sm hover:text-red-500 transition-colors">Search</button>
+            <button class="bg-red-600 px-3 py-1 lg:px-4 lg:py-2 rounded-md hover:bg-red-700 text-xs lg:text-sm transition-colors">Sign In</button>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-screen bg-cover bg-center" style="background-image: url('https://occ-0-4574-4421.1.nflxso.net/dnm/api/v6/3z7gD8A25Cg6V6gQMrLXvEw2rd3LQx7jF2Mb7A0/AAAABVZXfAYIuTcTHaV2vwWsqw5l9zz8cHqDJqSg9n3JHRE5gR5Im9sVjvs8m6H4w59d_eYwYm4QgntRPmp5Dsx5VuK--_DgL2gGsmRrD_akpO_g5SlIHkmr5yJb7dXfg8DNOAY0dCVq1QK2iA7an8=");">
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-        <div class="absolute top-1/3 left-4 text-white">
-            <h1 class="text-6xl font-bold mb-6">Watch the Best Movies & TV Shows</h1>
-            <p class="text-lg mb-8">Unlimited streaming, no ads. Join now.</p>
-            <button class="bg-red-600 px-6 py-3 text-xl font-semibold rounded-md">Join Now</button>
+    <section class="relative h-screen bg-cover bg-center hero-bg">
+        <div class="absolute top-1/3 left-4 lg:left-6 text-white max-w-lg lg:max-w-2xl">
+            <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 lg:mb-6 leading-tight">Watch the Best Movies & TV Shows</h1>
+            <p class="text-sm lg:text-lg mb-6 lg:mb-8 text-gray-200">Unlimited streaming, no ads. Join now and discover thousands of movies and series.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button class="bg-red-600 px-4 lg:px-6 py-2 lg:py-3 text-sm lg:text-xl font-semibold rounded-md hover:bg-red-700 transition-all">Join Now</button>
+                <button class="bg-gray-600 bg-opacity-70 px-4 lg:px-6 py-2 lg:py-3 text-sm lg:text-xl font-semibold rounded-md hover:bg-gray-500 transition-all">More Info</button>
+            </div>
         </div>
     </section>
 
-    <!-- Movie Row 1 -->
-    <section class="p-8">
-        <h2 class="text-2xl font-bold mb-4">Trending Now</h2>
-        <div class="flex space-x-4 overflow-x-scroll scrollbar-hide">
-            <img src="https://www.themoviedb.org/t/p/w300/pfcnuUjoQ7T0kqBQHfQES32SXYa.jpg" alt="Movie 1" class="w-32 h-auto rounded-lg hover:scale-105 transition-transform">
-            <img src="https://www.themoviedb.org/t/p/w300/jh7WwYrQLDqCtdXZelr4xg9mXhB.jpg" alt="Movie 2" class="w-32 h-auto rounded-lg hover:scale-105 transition-transform">
-            <img src="https://www.themoviedb.org/t/p/w300/m2l9mjHbRlaOg5t7afndbLsBKlA.jpg" alt="Movie 3" class="w-32 h-auto rounded-lg hover:scale-105 transition-transform">
-            <img src="https://www.themoviedb.org/t/p/w300/xlMmfGl5A9yB01h4T4m8C2K33jX.jpg" alt="Movie 4" class="w-32 h-auto rounded-lg hover:scale-105 transition-transform">
+    <!-- Movie Row 1 (Trending Now) -->
+    <section class="p-4 lg:p-8">
+        <h2 class="text-xl lg:text-3xl font-bold mb-4">Trending Now</h2>
+        <div class="flex space-x-3 lg:space-x-6 overflow-x-scroll scrollbar-hide pb-4">
+            <img src="https://www.themoviedb.org/t/p/w300/pfcnuUjoQ7T0kqBQHfQES32SXYa.jpg" alt="Movie 1" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/jh7WwYrQLDqCtdXZelr4xg9mXhB.jpg" alt="Movie 2" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/m2l9mjHbRlaOg5t7afndbLsBKlA.jpg" alt="Movie 3" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/xlMmfGl5A9yB01h4T4m8C2K33jX.jpg" alt="Movie 4" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/qDOrA7tDpx3sUUpmTzECBGbrA5Y.jpg" alt="Movie 5" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/6gkpBOgh1Kn5b7Eoy4A1z1tLvF4.jpg" alt="Movie 6" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
         </div>
     </section>
 
-    <!-- Movie Row 2 -->
-    <section class="p-8">
-        <h2 class="text-2xl font-bold mb-4">Top Rated</h2>
-        <div class="flex space-x-4 overflow-x-scroll scrollbar-hide">
-            <img src="https://www.themoviedb.org/t/p/w300/qDOrA7tDpx3sUUpmTzECBGbrA5Y.jpg" alt="Movie 5" class="w-32 h-auto rounded-lg hover:scale-105 transition-transform">
-            <img src="https://www.themoviedb.org/t/p/w300/6gkpBOgh1Kn5b7Eoy4A1z1tLvF4.jpg" alt="Movie 6" class="w-32 h-auto rounded-lg hover:scale-105 transition-transform">
-            <img src="https://www.themoviedb.org/t/p/w300/xK1PTGJbP7hKkIZLaEfncy60OJJ.jpg" alt="Movie 7" class="w-32 h-auto rounded-lg hover:scale-105 transition-transform">
-            <img src="https://www.themoviedb.org/t/p/w300/v3C2f5ZnKIZ7XZsmnk6EJpvti43.jpg" alt="Movie 8" class="w-32 h-auto rounded-lg hover:scale-105 transition-transform">
+    <!-- Netflix Original Series -->
+    <section class="p-4 lg:p-8 bg-gray-900 mt-4 lg:mt-6">
+        <h2 class="text-xl lg:text-3xl font-bold mb-4">Netflix Originals</h2>
+        <div class="flex space-x-3 lg:space-x-6 overflow-x-scroll scrollbar-hide pb-4">
+            <img src="https://www.themoviedb.org/t/p/w300/56v2KjBlU4XaOv9rVYEQypROD7P.jpg" alt="Stranger Things" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/rBf8wVEjVSYW6Vel7PjsSQcnRug.jpg" alt="The Crown" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/TU7D8MjltxPnWkDnJVOaBRHzK6.jpg" alt="Ozark" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/xrObu5LbABsRUdmr05KapO3Ux3E.jpg" alt="House of Cards" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/lJA2RCMfsWoskqlQhXPSLFQGXEJ.jpg" alt="Dark" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/6POBWybSBDBKjSs1VAQcnQC1qyt.jpg" alt="Orange is the New Black" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+        </div>
+    </section>
+
+    <!-- Popular Web Series -->
+    <section class="p-4 lg:p-8 mt-4 lg:mt-6">
+        <h2 class="text-xl lg:text-3xl font-bold mb-4">Popular Web Series</h2>
+        <div class="flex space-x-3 lg:space-x-6 overflow-x-scroll scrollbar-hide pb-4">
+            <img src="https://www.themoviedb.org/t/p/w300/wjkqNMCuL6hPEgKULG7MHMvGDw8.jpg" alt="Breaking Bad" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/4UjiPdFKJGJYdxwRs2Rzg7EmWqr.jpg" alt="Better Call Saul" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg" alt="Game of Thrones" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/6kbAMLteGO8yyewYau6bJ683sw7.jpg" alt="The Walking Dead" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg" alt="Money Heist" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/lJA2RCMfsWoskqlQhXPSLFQGXEJ.jpg" alt="Narcos" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+        </div>
+    </section>
+
+    <!-- Action & Adventure -->
+    <section class="p-4 lg:p-8 bg-gray-900 mt-4 lg:mt-6">
+        <h2 class="text-xl lg:text-3xl font-bold mb-4">Action & Adventure</h2>
+        <div class="flex space-x-3 lg:space-x-6 overflow-x-scroll scrollbar-hide pb-4">
+            <img src="https://www.themoviedb.org/t/p/w300/9rtrRGeRnL0JKtu9IMBWsmlmmZz.jpg" alt="The Witcher" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/lJA2RCMfsWoskqlQhXPSLFQGXEJ.jpg" alt="Vikings" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/mGVrXeIjyecj6TKmwPVpHlscEmw.jpg" alt="Lucifer" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/wcaDIAG1QdXQLRaj4vC1EFdBT2.jpg" alt="Daredevil" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/7TCwWEVrKXz1OpVOJNu9Z5MwrB9.jpg" alt="The Umbrella Academy" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/6tfT03sGp9k4c0J3dypjrI8TSAI.jpg" alt="The Mandalorian" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+        </div>
+    </section>
+
+    <!-- Comedy Series -->
+    <section class="p-4 lg:p-8 mt-4 lg:mt-6">
+        <h2 class="text-xl lg:text-3xl font-bold mb-4">Comedy Series</h2>
+        <div class="flex space-x-3 lg:space-x-6 overflow-x-scroll scrollbar-hide pb-4">
+            <img src="https://www.themoviedb.org/t/p/w300/f1K00ZJsCc4jzDBoXW7ayJhLoGs.jpg" alt="The Good Place" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/gLqFhY3GvgOLmW4qH9h7zKaJRJO.jpg" alt="Brooklyn Nine-Nine" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/wA45P1d5GKlvjiwxFU5k6Gg6e1F.jpg" alt="Friends" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/klrWYKqOOxhKTI0hBJQvKWDZs3E.jpg" alt="The Office" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/6POBWybSBDBKjSs1VAQcnQC1qyt.jpg" alt="Parks and Recreation" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/pJyzk2lEzgROLRCjJYRFPqvnJlF.jpg" alt="Schitts Creek" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+        </div>
+    </section>
+
+    <!-- Top Rated Movies -->
+    <section class="p-4 lg:p-8 bg-gray-900 mt-4 lg:mt-6">
+        <h2 class="text-xl lg:text-3xl font-bold mb-4">Top Rated Movies</h2>
+        <div class="flex space-x-3 lg:space-x-6 overflow-x-scroll scrollbar-hide pb-4">
+            <img src="https://www.themoviedb.org/t/p/w300/qDOrA7tDpx3sUUpmTzECBGbrA5Y.jpg" alt="The Shawshank Redemption" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/6gkpBOgh1Kn5b7Eoy4A1z1tLvF4.jpg" alt="The Godfather" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/xK1PTGJbP7hKkIZLaEfncy60OJJ.jpg" alt="The Dark Knight" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/v3C2f5ZnKIZ7XZsmnk6EJpvti43.jpg" alt="Pulp Fiction" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg" alt="Forrest Gump" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
+            <img src="https://www.themoviedb.org/t/p/w300/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg" alt="Fight Club" class="w-24 lg:w-32 flex-shrink-0 rounded-lg hover:scale-105 transition-all transform duration-200 cursor-pointer">
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-4 mt-8">
-        <div class="flex justify-center space-x-8 text-sm">
-            <a href="#" class="hover:text-red-500">Privacy</a>
-            <a href="#" class="hover:text-red-500">Terms of Service</a>
-            <a href="#" class="hover:text-red-500">Contact</a>
+    <footer class="bg-black py-8 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                <div>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-red-500 transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Investor Relations</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Privacy</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Speed Test</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Jobs</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Cookie Preferences</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Legal Notices</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Account</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Ways to Watch</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Corporate Information</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Only on Netflix</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Media Center</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Terms of Use</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6">
+                <p class="text-center text-xs text-gray-500">© 2025 Netflix, Inc. All rights reserved.</p>
+            </div>
         </div>
-        <p class="text-center text-xs mt-4">© 2025 Netflix, Inc.</p>
     </footer>
 
 </body>
